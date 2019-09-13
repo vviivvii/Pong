@@ -23,6 +23,7 @@ Boolean paddleLeftUp = false;
 Boolean paddleLeftDown = false;
 int player1score = 0;
 int player2score = 0;
+int rally = 0;
 
 void setup() {
   fullScreen(); 
@@ -31,16 +32,16 @@ void setup() {
   ballSize = int (displayWidth*1/128);
   ballMoveX = int(ballStartPositionX);
   ballMoveY = int(ballStartPositionY);
+
   paddleStartY = (height/2) - (height*1/16);
   paddleMoveYLeft = paddleStartY; 
   paddleMoveYRight = paddleStartY;
-
   paddleHeight = displayHeight* 1/8;
   paddleWidth =  displayWidth*1/100;
   paddleMoveXLeft = 0+displayWidth*1/30;
   paddleMoveXRight = 0+displayWidth*29/30;
-  paddleMoveYLeft = (height/2) - (height*1/16);
-  paddleMoveYRight = (height/2) - (height*1/16);
+  paddleMoveYLeft = (displayHeight/2) - (displayHeight*1/16);
+  paddleMoveYRight = (displayHeight/2) - (displayHeight*1/16);
 
   DarkMode1 = 255;//Should be a button
   DarkMode2 = 51; //Should be a button
@@ -71,12 +72,13 @@ void draw() {
   if (ballMoveX >= displayWidth - ballSize/2 || ballMoveX <= 0 + ballSize/2) {
     speedX = speedX * -1;
   }
-// Right paddle
+
+  // Right paddle
   if (paddleRightUp == true ) {
-    paddleMoveYRight -= 3;
+    paddleMoveYRight -= 4;
   }
   if (paddleRightDown == true) {
-    paddleMoveYRight += 3;
+    paddleMoveYRight += 4;
   }
   if (paddleMoveYRight <= 0 ) {
     paddleMoveYRight = 0;
@@ -85,12 +87,12 @@ void draw() {
     paddleMoveYRight = displayHeight-paddleHeight;
   }
 
-//Left paddle
+  //Left paddle
   if (paddleLeftUp == true ) {
-    paddleMoveYLeft -= 3;
+    paddleMoveYLeft -= 4;
   }
   if (paddleLeftDown == true) {
-    paddleMoveYLeft += 3;
+    paddleMoveYLeft += 4;
   }
   if (paddleMoveYLeft <= 0 ) {
     paddleMoveYLeft = 0;
@@ -98,18 +100,21 @@ void draw() {
   if (paddleMoveYLeft >= displayHeight-paddleHeight ) {
     paddleMoveYLeft = displayHeight-paddleHeight;
   }
+
   // Bounce off Paddles, order of arithemtic important
   if (ballMoveX <= paddleMoveXLeft+paddleWidth+ballSize/2) { // Bounce or Goal
     if (ballMoveY >= paddleMoveYLeft && ballMoveY <= paddleMoveYLeft+paddleHeight) {
       speedX = speedX * -1;
+      rally += 1;
     }
   }
   if (ballMoveX >= paddleMoveXRight-ballSize/2) { // Bounce or Goal
     if (ballMoveY >= paddleMoveYRight && ballMoveY <= paddleMoveYRight+paddleHeight) {
       speedX = speedX * -1;
+      rally += 1;
     }
   }
-  
+
   ballMoveX += speedX;
   ballMoveY += speedY;
   println("Ball " + "X Move:", ballMoveX + " Y Move:", ballMoveY);
@@ -119,8 +124,14 @@ void draw() {
   fill(#00FF97);
   ellipse(ballMoveX, ballMoveY, ballSize, ballSize);
   fill(255);
-  println ("Player 1", player1score);
-  println ("Player 2", player2score);
+  //println ("Player 1", player1score);
+  //println ("Player 2", player2score);
+  //Text
+  textSize(108);
+  text(player1score, displayWidth*4/16, displayHeight*0.1/1);
+  text(player2score, displayWidth*11/16, displayHeight*0.1/1);
+  textSize(80);
+  text("rally " + rally, displayWidth*7/16, displayHeight - (displayHeight*5/100));
 }
 
 void keyPressed () {
@@ -140,4 +151,6 @@ void keyPressed () {
     paddleLeftDown = true; //Codes continuous action
     paddleLeftUp = false;
   }
+}
+void mousePressed() {
 }
