@@ -1,3 +1,4 @@
+//Global Varlables
 float ballStartPositionX;
 float ballStartPositionY;
 float ballSize;
@@ -20,6 +21,8 @@ Boolean paddleRightUp = false;
 Boolean paddleRightDown = false;
 Boolean paddleLeftUp = false;
 Boolean paddleLeftDown = false;
+int player1score = 0;
+int player2score = 0;
 
 void setup() {
   fullScreen(); 
@@ -53,6 +56,14 @@ void draw() {
   background(DarkMode2);
   //println("X Start:", ballStartPositionX, "Start Y:", ballStartPositionY);
   //println("X Move:", ballMoveX, "Y Move", ballMoveY);
+  if ( ballMoveX <= paddleMoveXLeft ) {
+    noLoop(); // End the Game
+    player2score = 1;
+  }
+  if ( ballMoveX >= paddleMoveXRight+paddleWidth ) {
+    noLoop(); // End the Game
+    player1score = 1;
+  }
   fill(DarkMode1);
   if (ballMoveY >= displayHeight - ballSize/2 || ballMoveY <= 0 + ballSize/2) {
     speedY = speedY * -1;
@@ -101,13 +112,15 @@ void draw() {
   
   ballMoveX += speedX;
   ballMoveY += speedY;
-  println("X Move:", ballMoveX + " Y Move:", ballMoveY);
+  println("Ball " + "X Move:", ballMoveX + " Y Move:", ballMoveY);
   noStroke();
   rect(paddleMoveXLeft, paddleMoveYLeft, paddleWidth, paddleHeight); //Paddle #1
   rect(paddleMoveXRight, paddleMoveYRight, paddleWidth, paddleHeight);// Paddle #2
   fill(#00FF97);
   ellipse(ballMoveX, ballMoveY, ballSize, ballSize);
   fill(255);
+  println ("Player 1", player1score);
+  println ("Player 2", player2score);
 }
 
 void keyPressed () {
