@@ -111,12 +111,15 @@ void draw() {
   if (ballMoveX >= paddleMoveXRight-ballSize/2) { // Bounce or Goal
     if (ballMoveY >= paddleMoveYRight && ballMoveY <= paddleMoveYRight+paddleHeight) {
       speedX = speedX * -1;
-      rally += 1;
     }
   }
+  //buttons
+  rect(width*6/16, height*0.1/4, width*1/16, height*0.4/4);
+  rect(width*8.5/16, height*0.1/4, width*1/16, height*0.4/4);
 
   ballMoveX += speedX;
   ballMoveY += speedY;
+
   println("Ball " + "X Move:", ballMoveX + " Y Move:", ballMoveY);
   noStroke();
   rect(paddleMoveXLeft, paddleMoveYLeft, paddleWidth, paddleHeight); //Paddle #1
@@ -124,14 +127,17 @@ void draw() {
   fill(#00FF97);
   ellipse(ballMoveX, ballMoveY, ballSize, ballSize);
   fill(255);
-  //println ("Player 1", player1score);
-  //println ("Player 2", player2score);
+
   //Text
   textSize(108);
   text(player1score, displayWidth*4/16, displayHeight*0.1/1);
   text(player2score, displayWidth*11/16, displayHeight*0.1/1);
-  textSize(80);
-  text("rally " + rally, displayWidth*7/16, displayHeight - (displayHeight*5/100));
+  
+  //println ("rallys "+ rally);
+  if (rally >= 1) {
+    textSize(80);
+    text("rally " + rally, displayWidth*7/16, displayHeight - (displayHeight*5/100));
+  }
 }
 
 void keyPressed () {
