@@ -24,6 +24,7 @@ Boolean paddleLeftDown = false;
 int player1score = 0;
 int player2score = 0;
 int rally = 0;
+int clickToStart = 0;
 
 void setup() {
   fullScreen(); 
@@ -50,6 +51,7 @@ void setup() {
 
   //Create a ball
   ellipse(ballStartPositionX, ballStartPositionY, ballSize, ballSize);
+  noLoop();
 }
 void draw() {
 
@@ -57,7 +59,7 @@ void draw() {
   background(DarkMode2);
   //println("X Start:", ballStartPositionX, "Start Y:", ballStartPositionY);
   //println("X Move:", ballMoveX, "Y Move", ballMoveY);
-  /*
+
   if ( ballMoveX <= paddleMoveXLeft ) {
     noLoop(); // End the Game
     player2score = 1;
@@ -66,7 +68,7 @@ void draw() {
     noLoop(); // End the Game
     player1score = 1;
   }
-  */
+
   fill(DarkMode1);
   if (ballMoveY >= displayHeight - ballSize/2 || ballMoveY <= 0 + ballSize/2) {
     speedY = speedY * -1;
@@ -160,7 +162,12 @@ void keyPressed () {
 }
 
 void mouseClicked() {
-   if ((mouseX > width*8.34/16 && mouseX<width*9.4/16 && mouseY < height*2/16) && mouseY > height*0.4/16) {
+  clickToStart += 1;
+  if ((mouseX > width*8.34/16 && mouseX<width*9.4/16 && mouseY < height*2/16) && mouseY > height*0.4/16) {
     exit();
+  }
+  if (clickToStart == 1) {
+    loop();
+    clickToStart +=1;
   }
 }

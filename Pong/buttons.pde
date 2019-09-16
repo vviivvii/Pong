@@ -18,4 +18,13 @@ void buttons () {
     rect(width*6/16, height*0.1/4, width*1/16, height*0.4/4);
     fill(0);
   }
+  
+  //Start game
+  textSize(30);
+  fill(255);
+  if (clickToStart == 0) {
+    text("Click to start game", width*3.4/8, height*6/9 );
+  } else {
+  }
+  
 }
