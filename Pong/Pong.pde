@@ -57,6 +57,7 @@ void draw() {
   background(DarkMode2);
   //println("X Start:", ballStartPositionX, "Start Y:", ballStartPositionY);
   //println("X Move:", ballMoveX, "Y Move", ballMoveY);
+  /*
   if ( ballMoveX <= paddleMoveXLeft ) {
     noLoop(); // End the Game
     player2score = 1;
@@ -65,6 +66,7 @@ void draw() {
     noLoop(); // End the Game
     player1score = 1;
   }
+  */
   fill(DarkMode1);
   if (ballMoveY >= displayHeight - ballSize/2 || ballMoveY <= 0 + ballSize/2) {
     speedY = speedY * -1;
@@ -113,9 +115,6 @@ void draw() {
       speedX = speedX * -1;
     }
   }
-  //buttons
-  rect(width*6/16, height*0.1/4, width*1/16, height*0.4/4);
-  rect(width*8.5/16, height*0.1/4, width*1/16, height*0.4/4);
 
   ballMoveX += speedX;
   ballMoveY += speedY;
@@ -132,12 +131,13 @@ void draw() {
   textSize(108);
   text(player1score, displayWidth*4/16, displayHeight*0.1/1);
   text(player2score, displayWidth*11/16, displayHeight*0.1/1);
-  
+
   //println ("rallys "+ rally);
   if (rally >= 1) {
     textSize(80);
     text("rally " + rally, displayWidth*7/16, displayHeight - (displayHeight*5/100));
   }
+  buttons();
 }
 
 void keyPressed () {
@@ -158,5 +158,9 @@ void keyPressed () {
     paddleLeftUp = false;
   }
 }
-void mousePressed() {
+
+void mouseClicked() {
+   if ((mouseX > width*8.34/16 && mouseX<width*9.4/16 && mouseY < height*2/16) && mouseY > height*0.4/16) {
+    exit();
+  }
 }
