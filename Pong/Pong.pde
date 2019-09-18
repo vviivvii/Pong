@@ -62,6 +62,7 @@ void draw() {
   } else {
     background(DarkMode2);
   }
+  
   //println(lightModeOn);
   //println("X Start:", ballStartPositionX, "Start Y:", ballStartPositionY);
   //println("X Move:", ballMoveX, "Y Move", ballMoveY);
@@ -135,8 +136,13 @@ void draw() {
   noStroke();
   rect(paddleMoveXLeft, paddleMoveYLeft, paddleWidth, paddleHeight); //Paddle #1
   rect(paddleMoveXRight, paddleMoveYRight, paddleWidth, paddleHeight);// Paddle #2
-  fill(#00FF97);
+  if (lightModeOn == true) {
+    fill(#0000FF);
+  } else {
+    fill(#00FF97);;
+  }
   ellipse(ballMoveX, ballMoveY, ballSize, ballSize);
+  
   if (lightModeOn == true) {
     fill(LightMode1);
   } else {
