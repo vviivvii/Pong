@@ -25,6 +25,7 @@ int player1score = 0;
 int player2score = 0;
 int rally = 0;
 int clickToStart = 0;
+Boolean lightModeOn = false;
 
 void setup() {
   fullScreen(); 
@@ -56,7 +57,12 @@ void setup() {
 void draw() {
 
   //Move the ball
-  background(DarkMode2);
+  if (lightModeOn == true) {
+    background(LightMode2);
+  } else {
+    background(DarkMode2);
+  }
+  //println(lightModeOn);
   //println("X Start:", ballStartPositionX, "Start Y:", ballStartPositionY);
   //println("X Move:", ballMoveX, "Y Move", ballMoveY);
 
@@ -68,8 +74,12 @@ void draw() {
     noLoop(); // End the Game
     player1score = 1;
   }
+  if (lightModeOn == true) {
+    fill(LightMode1);
+  } else {
+    fill(DarkMode1);
+  }
 
-  fill(DarkMode1);
   if (ballMoveY >= displayHeight - ballSize/2 || ballMoveY <= 0 + ballSize/2) {
     speedY = speedY * -1;
   }
@@ -127,8 +137,11 @@ void draw() {
   rect(paddleMoveXRight, paddleMoveYRight, paddleWidth, paddleHeight);// Paddle #2
   fill(#00FF97);
   ellipse(ballMoveX, ballMoveY, ballSize, ballSize);
-  fill(255);
-
+  if (lightModeOn == true) {
+    fill(LightMode1);
+  } else {
+    fill(DarkMode1);
+  }
   //Text
   textSize(108);
   text(player1score, displayWidth*4/16, displayHeight*0.1/1);
@@ -165,6 +178,14 @@ void mouseClicked() {
   clickToStart += 1;
   if ((mouseX > width*8.34/16 && mouseX<width*9.4/16 && mouseY < height*2/16) && mouseY > height*0.4/16) {
     exit();
+  }
+
+  if ((mouseX > width*5.95/16 && mouseX<width*7/16 && mouseY < height*2/16) && mouseY > height*0.4/16) {
+    if (lightModeOn == false) {
+      lightModeOn = true;
+    } else {
+      lightModeOn = false;
+    }
   }
   if (clickToStart == 1) {
     loop();
