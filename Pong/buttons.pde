@@ -1,3 +1,18 @@
+float ballStartPositionX;
+float ballStartPositionY;
+float ballSize;
+float paddleStartY;
+float paddleMoveXLeft;
+float paddleMoveYLeft;
+float paddleMoveXRight;
+float paddleMoveYRight;
+float paddleWidth;
+float paddleHeight;
+int LightMode1;
+int LightMode2;
+int DarkMode1;
+int DarkMode2;
+
 void buttons () {
   //buttons
   if ((mouseX > width*8.34/16 && mouseX<width*9.4/16 && mouseY < height*2/16) && mouseY > height*0.4/16) {

@@ -1,22 +1,8 @@
 //Global Varlables
-float ballStartPositionX;
-float ballStartPositionY;
-float ballSize;
 int ballMoveX;
 int ballMoveY;
 int speedX = 3; // speed
 int speedY = 3; // speed
-int LightMode1;
-int LightMode2;
-int DarkMode1;
-int DarkMode2;
-float paddleStartY;
-float paddleMoveXLeft;
-float paddleMoveYLeft;
-float paddleMoveXRight;
-float paddleMoveYRight;
-float paddleWidth;
-float paddleHeight;
 Boolean paddleRightUp = false;
 Boolean paddleRightDown = false;
 Boolean paddleLeftUp = false;
