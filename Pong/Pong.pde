@@ -48,18 +48,22 @@ void draw() {
   } else {
     background(DarkMode2);
   }
-  
+
   //println(lightModeOn);
   //println("X Start:", ballStartPositionX, "Start Y:", ballStartPositionY);
   //println("X Move:", ballMoveX, "Y Move", ballMoveY);
 
   if ( ballMoveX <= paddleMoveXLeft ) {
-    noLoop(); // End the Game
-    player2score = 1;
+    //noLoop(); // End the Game
+    ballMoveX = int(ballStartPositionX);
+    ballMoveY = int(ballStartPositionY);
+    player2score += 1;
   }
   if ( ballMoveX >= paddleMoveXRight+paddleWidth ) {
-    noLoop(); // End the Game
-    player1score = 1;
+    //noLoop(); // End the Game
+    ballMoveX = int(ballStartPositionX);
+    ballMoveY = int(ballStartPositionY);
+    player1score += 1;
   }
   if (lightModeOn == true) {
     fill(LightMode1);
@@ -125,10 +129,11 @@ void draw() {
   if (lightModeOn == true) {
     fill(#0000FF);
   } else {
-    fill(#00FF97);;
+    fill(#00FF97);
+    ;
   }
   ellipse(ballMoveX, ballMoveY, ballSize, ballSize);
-  
+
   if (lightModeOn == true) {
     fill(LightMode1);
   } else {
