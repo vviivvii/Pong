@@ -62,6 +62,12 @@ void draw() {
     player2score += 1;
     rally = 0;
     rallychecker = 0;
+    fill(#FF0000);
+    rect( displayWidth*0, displayHeight*0, displayWidth *1/2, displayHeight*1);
+    fill(#0000FF);
+    rect( displayWidth*0, displayHeight*0, displayWidth *1/2, displayHeight*1);
+    fill(#FF0000);
+    rect( displayWidth*0, displayHeight*0, displayWidth *1/2, displayHeight*1);
   }
   if ( ballMoveX >= paddleMoveXRight+paddleWidth ) {
     //noLoop(); // End the Game
@@ -70,6 +76,12 @@ void draw() {
     player1score += 1;
     rally = 0;
     rallychecker = 0;
+    fill(#FF0000);
+    rect( displayWidth*1/2, displayHeight*0, displayWidth *1, displayHeight*1);
+    fill(#0000FF);
+    rect( displayWidth*1/2, displayHeight*0, displayWidth *1, displayHeight*1);
+    fill(#FF0000);
+    rect( displayWidth*1/2, displayHeight*0, displayWidth *1, displayHeight*1);
   }
   if (lightModeOn == true) {
     fill(LightMode1);
@@ -83,9 +95,9 @@ void draw() {
   if (ballMoveX >= displayWidth - ballSize/2 || ballMoveX <= 0 + ballSize/2) {
     speedX = speedX * -1;
   }
-  
-  
-  
+
+
+
   // Right paddle
   if (paddleRightUp == true ) {
     paddleMoveYRight -= 4;
