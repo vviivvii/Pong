@@ -10,11 +10,13 @@ Boolean paddleLeftDown = false;
 int player1score = 0;
 int player2score = 0;
 int rally = 0;
+int rallychecker = 0;
 int clickToStart = 0;
 Boolean lightModeOn = false;
-
+Boolean rallya = true;
 void setup() {
   fullScreen(); 
+  screenSizeChecker();
   ballStartPositionX = int (displayWidth*1/2);
   ballStartPositionY = int(displayHeight*1/2);
   ballSize = int (displayWidth*1/128);
@@ -58,12 +60,16 @@ void draw() {
     ballMoveX = int(ballStartPositionX);
     ballMoveY = int(ballStartPositionY);
     player2score += 1;
+    rally = 0;
+    rallychecker = 0;
   }
   if ( ballMoveX >= paddleMoveXRight+paddleWidth ) {
     //noLoop(); // End the Game
     ballMoveX = int(ballStartPositionX);
     ballMoveY = int(ballStartPositionY);
     player1score += 1;
+    rally = 0;
+    rallychecker = 0;
   }
   if (lightModeOn == true) {
     fill(LightMode1);
@@ -110,15 +116,32 @@ void draw() {
   if (ballMoveX <= paddleMoveXLeft+paddleWidth+ballSize/2) { // Bounce or Goal
     if (ballMoveY >= paddleMoveYLeft && ballMoveY <= paddleMoveYLeft+paddleHeight) {
       speedX = speedX * -1;
-      rally += 1;
+      rallychecker += 1;
+      if (rallychecker >= 3) {      
+        if (rallya == true) {
+          rally +=1;
+          rallya = false;
+        } else if (rallya == false) {
+          rallya = true;
+        }
+      }
     }
   }
   if (ballMoveX >= paddleMoveXRight-ballSize/2) { // Bounce or Goal
     if (ballMoveY >= paddleMoveYRight && ballMoveY <= paddleMoveYRight+paddleHeight) {
       speedX = speedX * -1;
+      rallychecker+=1;
+
+      if (rallychecker >= 3) {
+        if (rallya == true) {
+          rally +=1;
+          rallya = false;
+        } else if (rallya == false) {
+          rallya = true;
+        }
+      }
     }
   }
-
   ballMoveX += speedX;
   ballMoveY += speedY;
 
@@ -130,7 +153,6 @@ void draw() {
     fill(#0000FF);
   } else {
     fill(#00FF97);
-    ;
   }
   ellipse(ballMoveX, ballMoveY, ballSize, ballSize);
 
@@ -144,7 +166,6 @@ void draw() {
   text(player1score, displayWidth*4/16, displayHeight*0.1/1);
   text(player2score, displayWidth*11/16, displayHeight*0.1/1);
 
-  //println ("rallys "+ rally);
   if (rally >= 1) {
     textSize(80);
     text("rally " + rally, displayWidth*7/16, displayHeight - (displayHeight*5/100));

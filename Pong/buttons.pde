@@ -33,13 +33,15 @@ void buttons () {
     rect(displayWidth*6/16, displayHeight*0.1/4, displayWidth*1/16, displayHeight*0.4/4);
     fill(0);
   }
-  
+
   //Start game
   textSize(30);
   fill(255);
   if (clickToStart == 0) {
+    fill(#C1C1C1);
+    rect(displayWidth*3.3/8, displayHeight*5.7/9, displayWidth*1.33/8, displayHeight*0.5/9);
+    fill(255);
     text("Click to start game", displayWidth*3.4/8, displayHeight*6/9 );
   } else {
   }
-  
 }
