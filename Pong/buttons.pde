@@ -44,4 +44,8 @@ void buttons () {
     text("Click to start game", displayWidth*3.4/8, displayHeight*6/9 );
   } else {
   }
+  fill(0);
+  text("Quit", displayWidth*8.6/16, displayHeight*0.33/4);
+  text("Change", displayWidth*6/16, displayHeight*0.32/4);
+  text("Color", displayWidth*6.1/16, displayHeight*0.42/4);
 }

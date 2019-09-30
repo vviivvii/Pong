@@ -83,7 +83,9 @@ void draw() {
   if (ballMoveX >= displayWidth - ballSize/2 || ballMoveX <= 0 + ballSize/2) {
     speedX = speedX * -1;
   }
-
+  
+  
+  
   // Right paddle
   if (paddleRightUp == true ) {
     paddleMoveYRight -= 4;
