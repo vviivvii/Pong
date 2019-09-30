@@ -38,6 +38,44 @@ void setup() {
   LightMode1 = 51;
   LightMode2 = 255;
 
+  int number = int (random (-4, 4));
+  while (number == 0) {
+    number = int (random (-4, 4));
+  }
+  while (number == 1) {
+    number = int (random (-4, 4));
+  }
+  while (number == 2) {
+    number = int (random (-4, 4));
+  }
+  while (number == -1) {
+    number = int (random (-4, 4));
+  }
+  while (number == -2) {
+    number = int (random (-4, 4));
+  }
+  speedX = number;
+  println("speedX", speedX);
+  number = int (random (-4, 4));
+  
+  while (number == 0) {
+    number = int (random (-4, 4));
+  }
+    while (number == 1) {
+    number = int (random (-4, 4));
+  }
+  while (number == 2) {
+    number = int (random (-4, 4));
+  }
+  while (number == -1) {
+    number = int (random (-4, 4));
+  }
+  while (number == -2) {
+    number = int (random (-4, 4));
+  }
+  speedY = number;
+  println("speedY", speedX);
+
   //Create a ball
   ellipse(ballStartPositionX, ballStartPositionY, ballSize, ballSize);
   noLoop();
@@ -156,10 +194,12 @@ void draw() {
       }
     }
   }
-  ballMoveX += speedX;
+
+  ballMoveX += speedX; 
   ballMoveY += speedY;
 
-  println("Ball " + "X Move:", ballMoveX + " Y Move:", ballMoveY);
+  //println("Ball " + "X Move:", ballMoveX + " Y Move:", ballMoveY);
+  
   noStroke();
   rect(paddleMoveXLeft, paddleMoveYLeft, paddleWidth, paddleHeight); //Paddle #1
   rect(paddleMoveXRight, paddleMoveYRight, paddleWidth, paddleHeight);// Paddle #2
