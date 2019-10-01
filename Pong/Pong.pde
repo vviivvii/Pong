@@ -39,38 +39,14 @@ void setup() {
   LightMode2 = 255;
 
   int number = int (random (-4, 4));
-  while (number == 0) {
-    number = int (random (-4, 4));
-  }
-  while (number == 1) {
-    number = int (random (-4, 4));
-  }
-  while (number == 2) {
-    number = int (random (-4, 4));
-  }
-  while (number == -1) {
-    number = int (random (-4, 4));
-  }
-  while (number == -2) {
+  while (number == 0 || number == 1 || number == 2 || number == -1 || number == -2) {
     number = int (random (-4, 4));
   }
   speedX = number;
   println("speedX", speedX);
   number = int (random (-4, 4));
-  
-  while (number == 0) {
-    number = int (random (-4, 4));
-  }
-    while (number == 1) {
-    number = int (random (-4, 4));
-  }
-  while (number == 2) {
-    number = int (random (-4, 4));
-  }
-  while (number == -1) {
-    number = int (random (-4, 4));
-  }
-  while (number == -2) {
+
+  while (number == 0 || number == 1 || number == 2 || number == -1 || number == -2) {
     number = int (random (-4, 4));
   }
   speedY = number;
@@ -134,7 +110,13 @@ void draw() {
     speedX = speedX * -1;
   }
 
-
+  if (ballMoveY <= displayHeight*2/16 && ballMoveX >= displayWidth*8.3/16 + ballSize/2 && ballMoveX <= displayWidth*9.4/16 && ballMoveY >= displayHeight*0.4/16) {
+    speedY = speedY * -1;
+  }
+  
+  if (ballMoveY <= displayHeight*2/16 && ballMoveX >= displayWidth*5.7/16 + ballSize/2 && ballMoveX <= displayWidth*6.6/16 && ballMoveY >= displayHeight*0.4/16) {
+    speedY = speedY * -1;
+  }
 
   // Right paddle
   if (paddleRightUp == true ) {
@@ -199,16 +181,11 @@ void draw() {
   ballMoveY += speedY;
 
   //println("Ball " + "X Move:", ballMoveX + " Y Move:", ballMoveY);
-  
+
   noStroke();
   rect(paddleMoveXLeft, paddleMoveYLeft, paddleWidth, paddleHeight); //Paddle #1
   rect(paddleMoveXRight, paddleMoveYRight, paddleWidth, paddleHeight);// Paddle #2
-  if (lightModeOn == true) {
-    fill(#0000FF);
-  } else {
-    fill(#00FF97);
-  }
-  ellipse(ballMoveX, ballMoveY, ballSize, ballSize);
+
 
   if (lightModeOn == true) {
     fill(LightMode1);
@@ -225,6 +202,13 @@ void draw() {
     text("rally " + rally, displayWidth*7/16, displayHeight - (displayHeight*5/100));
   }
   buttons();
+
+  if (lightModeOn == true) {
+    fill(#0000FF);
+  } else {
+    fill(#00FF97);
+  }
+  ellipse(ballMoveX, ballMoveY, ballSize, ballSize);
 }
 
 void keyPressed () {
