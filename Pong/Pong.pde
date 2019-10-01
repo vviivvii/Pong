@@ -14,6 +14,7 @@ int rallychecker = 0;
 int clickToStart = 0;
 Boolean lightModeOn = false;
 Boolean rallya = true;
+
 void setup() {
   fullScreen(); 
   screenSizeChecker();
@@ -117,7 +118,9 @@ void draw() {
   if (ballMoveY <= displayHeight*2/16 && ballMoveX >= displayWidth*5.7/16 + ballSize/2 && ballMoveX <= displayWidth*6.6/16 && ballMoveY >= displayHeight*0.4/16) {
     speedY = speedY * -1;
   }
-
+  
+  Handicap();
+  
   // Right paddle
   if (paddleRightUp == true ) {
     paddleMoveYRight -= 4;
