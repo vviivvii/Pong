@@ -34,8 +34,9 @@ void setup() {
   paddleMoveYLeft = (displayHeight/2) - (displayHeight*1/16);
   paddleMoveYRight = (displayHeight/2) - (displayHeight*1/16);
 
-  DarkMode1 = 255;//Should be a button
-  DarkMode2 = 51; //Should be a button
+//Colors
+  DarkMode1 = 255;
+  DarkMode2 = 51; 
   LightMode1 = 51;
   LightMode2 = 255;
 
@@ -206,10 +207,11 @@ void draw() {
   }
   buttons();
 
+//ball Color 
   if (lightModeOn == true) {
-    fill(#0000FF);
+    fill(#0000FF); //Light mode
   } else {
-    fill(#00FF97);
+    fill(#00FF97); //Dark mode
   }
   ellipse(ballMoveX, ballMoveY, ballSize, ballSize);
 }
