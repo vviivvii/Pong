@@ -34,7 +34,7 @@ void setup() {
   paddleMoveYLeft = (displayHeight/2) - (displayHeight*1/16);
   paddleMoveYRight = (displayHeight/2) - (displayHeight*1/16);
 
-//Colors
+  //Colors
   DarkMode1 = 255;
   DarkMode2 = 51; 
   LightMode1 = 51;
@@ -45,14 +45,14 @@ void setup() {
     number = int (random (-4, 4));
   }
   speedX = number;
-  println("speedX", speedX);
+  println("starting speedX", speedX);
   number = int (random (-4, 4));
 
   while (number == 0 || number == 1 || number == 2 || number == -1 || number == -2) {
     number = int (random (-4, 4));
   }
   speedY = number;
-  println("speedY", speedX);
+  println("starting speedY", speedX);
 
   //Create a ball
   ellipse(ballStartPositionX, ballStartPositionY, ballSize, ballSize);
@@ -105,6 +105,10 @@ void draw() {
     fill(DarkMode1);
   }
 
+  Handicap();
+
+
+
   if (ballMoveY >= displayHeight - ballSize/2 || ballMoveY <= 0 + ballSize/2) {
     speedY = speedY * -1;
   }
@@ -115,13 +119,11 @@ void draw() {
   if (ballMoveY <= displayHeight*2/16 && ballMoveX >= displayWidth*8.3/16 + ballSize/2 && ballMoveX <= displayWidth*9.4/16 && ballMoveY >= displayHeight*0.4/16) {
     speedY = speedY * -1;
   }
-  
+
   if (ballMoveY <= displayHeight*2/16 && ballMoveX >= displayWidth*5.7/16 + ballSize/2 && ballMoveX <= displayWidth*6.6/16 && ballMoveY >= displayHeight*0.4/16) {
     speedY = speedY * -1;
   }
-  
-  Handicap();
-  
+
   // Right paddle
   if (paddleRightUp == true ) {
     paddleMoveYRight -= 4;
@@ -180,9 +182,10 @@ void draw() {
       }
     }
   }
-
+  
   ballMoveX += speedX; 
   ballMoveY += speedY;
+
 
   //println("Ball " + "X Move:", ballMoveX + " Y Move:", ballMoveY);
 
@@ -207,7 +210,7 @@ void draw() {
   }
   buttons();
 
-//ball Color 
+  //ball Color 
   if (lightModeOn == true) {
     fill(#0000FF); //Light mode
   } else {
