@@ -12,8 +12,12 @@ int LightMode1;
 int LightMode2;
 int DarkMode1;
 int DarkMode2;
+Boolean reset = false;
+Boolean resetareyousure = false;
+Boolean fastreset = false;
 
 void buttons () {
+
   //buttons
   if ((mouseX > width*8.34/16 && mouseX<width*9.4/16 && mouseY < height*2/16) && mouseY > height*0.4/16) {
     fill(124);
@@ -48,4 +52,67 @@ void buttons () {
   text("Quit", displayWidth*8.6/16, displayHeight*0.33/4);
   text("Change", displayWidth*6/16, displayHeight*0.32/4);
   text("Color", displayWidth*6.1/16, displayHeight*0.42/4);
+  if (resetareyousure == true) {
+    fill(155);
+    rect(displayWidth*1/16, displayHeight*0.5/16, displayWidth*2.5/16, displayHeight*4/16);
+    fill(0);
+    textSize(25);
+    text("Are you sure you want", displayWidth*1.1/16, displayHeight*1/16);
+    text("to reset the game?", displayWidth*1.3/16, displayHeight*1.4/16);
+    fill(255);
+    rect(displayWidth*1.3/16, displayHeight*2.5/16, displayWidth*0.6/16, displayHeight*1/16);
+    rect(displayWidth*2.5/16, displayHeight*2.5/16, displayWidth*0.6/16, displayHeight*1/16);
+  }
+  if (resetareyousure == true) {
+    if ((mouseX > width*1.2/16 && mouseX<width*1.9/16 && mouseY < height*3.5/16) && mouseY > height*2.4/16) {
+      fill(124);
+      rect(displayWidth*1.3/16, displayHeight*2.5/16, displayWidth*0.6/16, displayHeight*1/16);
+      fill(0);
+      text("Yes", displayWidth*1.4/16, displayHeight*3.2/16);
+    } else {
+      fill(244);
+      rect(displayWidth*1.3/16, displayHeight*2.5/16, displayWidth*0.6/16, displayHeight*1/16);
+      fill(0);
+      text("Yes", displayWidth*1.4/16, displayHeight*3.2/16);
+    }
+  }
+
+  if (resetareyousure == true) {
+    if ((mouseX > width*2.44/16 && mouseX<width*3.1/16 && mouseY < height*3.5/16) && mouseY > height*2.4/16) {
+      fill(124);
+      rect(displayWidth*2.5/16, displayHeight*2.5/16, displayWidth*0.6/16, displayHeight*1/16);
+      fill(0);
+      text("No", displayWidth*2.66/16, displayHeight*3.2/16);
+    } else {
+      fill(244);
+      rect(displayWidth*2.5/16, displayHeight*2.5/16, displayWidth*0.6/16, displayHeight*1/16);
+      fill(0);
+      text("No", displayWidth*2.66/16, displayHeight*3.2/16);
+    }
+  }
+  if (fastreset == true) {
+    player1score = 0;
+    player2score = 0;
+    reset = false;
+    fastreset = false;
+    resetareyousure = false;
+    rally = 0;
+    rallychecker = 0;
+    ballMoveX = int(ballStartPositionX);
+    ballMoveY = int(ballStartPositionY);
+    println("User said yes");
+  }
+}
+void reset() {
+  if (reset == true) {
+    if (player1score == 10 || player2score == 10) {
+      player1score = 0;
+      player2score = 0;
+      reset = false;
+      loop();
+    } else if (player1score < 9 || player2score < 9) {
+      println("Are you sure you want to reset?");
+      resetareyousure = true;
+    }
+  }
 }

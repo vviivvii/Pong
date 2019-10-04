@@ -71,6 +71,11 @@ void draw() {
   //println("X Start:", ballStartPositionX, "Start Y:", ballStartPositionY);
   //println("X Move:", ballMoveX, "Y Move", ballMoveY);
 
+  if (player2score == 10) {
+    println("PLAYER TWO WINS");
+    noLoop();
+  }
+
   if ( ballMoveX <= paddleMoveXLeft ) {
     //noLoop(); // End the Game
     ballMoveX = int(ballStartPositionX);
@@ -106,7 +111,6 @@ void draw() {
   }
 
   Handicap();
-
 
 
   if (ballMoveY >= displayHeight - ballSize/2 || ballMoveY <= 0 + ballSize/2) {
@@ -182,7 +186,7 @@ void draw() {
       }
     }
   }
-  
+
   ballMoveX += speedX; 
   ballMoveY += speedY;
 
@@ -217,6 +221,26 @@ void draw() {
     fill(#00FF97); //Dark mode
   }
   ellipse(ballMoveX, ballMoveY, ballSize, ballSize);
+
+  if (player1score == 10) {
+    fill(#76686D);
+    rect(displayWidth*3/16, displayHeight*4/16, displayWidth*10/16, displayHeight*8/16);
+    fill(0);
+    textSize(60);
+    text("PLAYER ONE WINS!", displayWidth*6.4/18, displayHeight*8.4/16);
+    println("PLAYER ONE WINS");
+    noLoop();
+  }
+
+  if (player2score == 10) {
+    fill(#76686D);
+    rect(displayWidth*3/16, displayHeight*4/16, displayWidth*10/16, displayHeight*8/16);
+    fill(0);
+    textSize(60);
+    text("PLAYER TWO WINS!", displayWidth*6.4/18, displayHeight*8.4/16);
+    println("PLAYER TWO WINS");
+    noLoop();
+  }
 }
 
 void keyPressed () {
@@ -236,6 +260,10 @@ void keyPressed () {
     paddleLeftDown = true; //Codes continuous action
     paddleLeftUp = false;
   }
+  if (key == CODED && key == 'R' || key == 'r') {
+    reset = true;
+    reset();
+  }
 }
 
 void mouseClicked() {
@@ -249,6 +277,18 @@ void mouseClicked() {
       lightModeOn = true;
     } else {
       lightModeOn = false;
+    }
+  }
+  if (resetareyousure == true) {
+    if ((mouseX > width*1.2/16 && mouseX<width*1.9/16 && mouseY < height*3.5/16) && mouseY > height*2.4/16) {
+      fastreset = true;
+    }
+  }
+  if (resetareyousure == true) {
+    if ((mouseX > width*2.44/16 && mouseX<width*3.1/16 && mouseY < height*3.5/16) && mouseY > height*2.4/16) {
+      resetareyousure = false;
+      reset = false;
+      println("User said no");
     }
   }
   if (clickToStart == 1) {
