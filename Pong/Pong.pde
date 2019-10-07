@@ -228,6 +228,8 @@ void draw() {
     fill(0);
     textSize(60);
     text("PLAYER ONE WINS!", displayWidth*6.4/18, displayHeight*8.4/16);
+    textSize(50);
+    text("Press R to reset", displayWidth*7.1/18, displayHeight*9.2/16);
     println("PLAYER ONE WINS");
     noLoop();
   }
@@ -238,6 +240,8 @@ void draw() {
     fill(0);
     textSize(60);
     text("PLAYER TWO WINS!", displayWidth*6.4/18, displayHeight*8.4/16);
+    textSize(50);
+    text("Press R to reset", displayWidth*7.1/18, displayHeight*9.2/16);
     println("PLAYER TWO WINS");
     noLoop();
   }
