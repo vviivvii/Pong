@@ -98,6 +98,8 @@ void buttons () {
     resetareyousure = false;
     rally = 0;
     rallychecker = 0;
+    oof1 = 0;
+    oof2 = 0;
     ballMoveX = int(ballStartPositionX);
     ballMoveY = int(ballStartPositionY);
     println("User said yes");
@@ -108,6 +110,8 @@ void reset() {
     if (player1score == 10 || player2score == 10) {
       player1score = 0;
       player2score = 0;
+      oof1 = 0;
+      oof2 = 0;
       reset = false;
       loop();
     } else if (player1score < 9 || player2score < 9) {

@@ -1,3 +1,12 @@
+Boolean Pew1 = false;
+float paddlePewXleft;
+float paddlePewYLeft;
+Boolean Pew2 = false;
+float paddlePewXright;
+float paddlePewYRight;
+int oof1 = 0;
+int oof2 = 0;
+
 void Handicap() {
   if (player1score - player2score > 2 && player1score > 2) {
     if (ballMoveX >= displayWidth*11.5/18-ballSize/2 && ballMoveX <= displayWidth*11.8/18 -ballSize/2) { 
@@ -45,5 +54,13 @@ void Handicap() {
     rect(displayWidth*6.5/18, displayHeight*12/16, displayWidth*1/100, displayHeight*1/6);
     rect(displayWidth*3/18, displayHeight*6.5/16, displayWidth*1/100, displayHeight*1.5/6);
   }
+  if (Pew1 == true) {
+    rect(paddlePewXleft, paddlePewYLeft + displayHeight*1/16 , displayWidth*2/50, displayHeight*1/100);
+    paddlePewXleft += 20;
+  }
   
+  if (Pew2 == true) {
+    rect(paddlePewXright, paddlePewYRight + displayHeight*1/16 , displayWidth*2/50, displayHeight*1/100);
+    paddlePewXright -= 20;
+  }
 }

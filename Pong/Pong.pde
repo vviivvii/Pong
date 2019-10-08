@@ -33,6 +33,8 @@ void setup() {
   paddleMoveXRight = 0+displayWidth*29/30;
   paddleMoveYLeft = (displayHeight/2) - (displayHeight*1/16);
   paddleMoveYRight = (displayHeight/2) - (displayHeight*1/16);
+  paddlePewXleft = paddleMoveXLeft;
+  paddlePewYLeft = paddleMoveYLeft;
 
   //Colors
   DarkMode1 = 255;
@@ -186,7 +188,32 @@ void draw() {
       }
     }
   }
+  if ( Pew1 == true) {
+    if (paddlePewXleft >= paddleMoveXRight- displayWidth*2/50/2) { 
+      if (paddlePewYLeft >= paddleMoveYRight && paddlePewYLeft <= paddleMoveYRight + paddleHeight  - displayHeight*3/50) {
+        oof2 += 1;
+        Pew1 = false;
+      }
+    }
+  }
 
+  if ( Pew2 == true) {
+    if (paddlePewXright <= paddleMoveXLeft+paddleWidth-displayWidth*2/50/2) { // Bounce or Goal
+      if (paddlePewYRight >= paddleMoveYLeft && paddlePewYRight <= paddleMoveYLeft+ paddleHeight - displayHeight*3/50) {
+        oof1 += 1;
+        Pew2 = false;
+      }
+    }
+  }
+  if (paddlePewXleft >= displayWidth || paddlePewXleft <= 0 ) {
+    Pew1 = false;
+  }
+  
+  if (paddlePewXright >= displayWidth || paddlePewXright <= 0 ) {
+    Pew2 = false;
+  }
+  
+  
   ballMoveX += speedX; 
   ballMoveY += speedY;
 
@@ -208,6 +235,41 @@ void draw() {
   text(player1score, displayWidth*4/16, displayHeight*0.1/1);
   text(player2score, displayWidth*11/16, displayHeight*0.1/1);
 
+  // Hitpoints
+  if (oof1 == 0) {
+    fill(#00FF00);
+    rect(displayWidth*3.6/16, displayHeight*2/16, displayWidth*1.5/50, displayHeight*3/100);
+    rect(displayWidth*4.1/16, displayHeight*2/16, displayWidth*1.5/50, displayHeight*3/100);
+    rect(displayWidth*4.6/16, displayHeight*2/16, displayWidth*1.5/50, displayHeight*3/100);
+  } else if (oof1 == 1) {
+    fill (#FFFF00);
+    rect(displayWidth*4.1/16, displayHeight*2/16, displayWidth*1.5/50, displayHeight*3/100);
+    rect(displayWidth*4.6/16, displayHeight*2/16, displayWidth*1.5/50, displayHeight*3/100);
+  } else if ( oof1 == 2) {
+    fill(#FF0000);
+    rect(displayWidth*4.6/16, displayHeight*2/16, displayWidth*1.5/50, displayHeight*3/100);
+  } else if ( oof1 == 3) {
+    oof1 = 0;
+    player2score += 1;
+  }
+
+  if (oof2 == 0) {
+    fill(#00FF00);
+    rect(displayWidth*10.6/16, displayHeight*2/16, displayWidth*1.5/50, displayHeight*3/100);
+    rect(displayWidth*11.1/16, displayHeight*2/16, displayWidth*1.5/50, displayHeight*3/100);
+    rect(displayWidth*11.6/16, displayHeight*2/16, displayWidth*1.5/50, displayHeight*3/100);
+  } else if (oof2 == 1) {
+    fill (#FFFF00);
+    rect(displayWidth*11.1/16, displayHeight*2/16, displayWidth*1.5/50, displayHeight*3/100);
+    rect(displayWidth*11.6/16, displayHeight*2/16, displayWidth*1.5/50, displayHeight*3/100);
+  } else if ( oof2 == 2) {
+    fill(#FF0000);
+    rect(displayWidth*11.6/16, displayHeight*2/16, displayWidth*1.5/50, displayHeight*3/100);
+  } else if ( oof2 == 3) {
+    oof2 = 0;
+    player1score += 1;
+  }
+  
   if (rally >= 1) {
     textSize(80);
     text("rally " + rally, displayWidth*7/16, displayHeight - (displayHeight*5/100));
@@ -267,6 +329,18 @@ void keyPressed () {
   if (key == CODED && key == 'R' || key == 'r') {
     reset = true;
     reset();
+  }
+  if (key == CODED && key == 'E' || key == 'e') {
+    Pew1 = true;
+    paddlePewXleft = paddleMoveXLeft;
+    paddlePewYLeft = paddleMoveYLeft;
+    println("Hits on player 2: " + oof2);
+  }
+  if (key == CODED && key == '?' || key == '/') {
+    Pew2 = true;
+    paddlePewXright = paddleMoveXRight;
+    paddlePewYRight = paddleMoveYRight;
+    println("Hits on player 1: " + oof1);
   }
 }
 
