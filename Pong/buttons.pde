@@ -44,8 +44,19 @@ void buttons () {
   if (clickToStart == 0) {
     fill(#C1C1C1);
     rect(displayWidth*3.3/8, displayHeight*5.7/9, displayWidth*1.33/8, displayHeight*0.5/9);
+    rect(displayWidth*2.6/8, displayHeight*6.5/9, displayWidth*2.8/8, displayHeight*2/9);
     fill(255);
     text("Click to start game", displayWidth*3.4/8, displayHeight*6/9 );
+    text("Controls", displayWidth*3.7/8, displayHeight*6.9/9);
+    text("Player 1", displayWidth*2.9/8, displayHeight*7.2/9);
+    text("Player 2", displayWidth*4.6/8, displayHeight*7.2/9);
+    textSize(25);
+    text("Press W to move up",displayWidth*2.7/8, displayHeight*7.6/9 );
+    text("Press S to move down",displayWidth*2.7/8, displayHeight*7.9/9 );
+    text("Press E to shoot",displayWidth*2.7/8, displayHeight*8.2/9 );
+    text("Press UP to move up",displayWidth*4/8, displayHeight*7.6/9 );
+    text("Press DOWN to move down",displayWidth*4/8, displayHeight*7.9/9 );
+    text("Press / to shoot",displayWidth*4/8, displayHeight*8.2/9 );
   } else {
   }
   fill(0);
