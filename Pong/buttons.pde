@@ -53,10 +53,10 @@ void buttons () {
     textSize(25);
     text("Press W to move up",displayWidth*2.7/8, displayHeight*7.6/9 );
     text("Press S to move down",displayWidth*2.7/8, displayHeight*7.9/9 );
-    text("Press E to shoot",displayWidth*2.7/8, displayHeight*8.2/9 );
+    text("Press D to shoot",displayWidth*2.7/8, displayHeight*8.2/9 );
     text("Press UP to move up",displayWidth*4/8, displayHeight*7.6/9 );
     text("Press DOWN to move down",displayWidth*4/8, displayHeight*7.9/9 );
-    text("Press / to shoot",displayWidth*4/8, displayHeight*8.2/9 );
+    text("Press LEFT to shoot",displayWidth*4/8, displayHeight*8.2/9 );
   } else {
   }
   fill(0);

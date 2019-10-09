@@ -330,13 +330,13 @@ void keyPressed () {
     reset = true;
     reset();
   }
-  if (key == CODED && key == 'E' || key == 'e') {
+  if (key == CODED && key == 'D' || key == 'd') {
     Pew1 = true;
     paddlePewXleft = paddleMoveXLeft;
     paddlePewYLeft = paddleMoveYLeft;
     println("Hits on player 2: " + oof2);
   }
-  if (key == CODED && key == '?' || key == '/') {
+  if (key == CODED && keyCode == LEFT) {
     Pew2 = true;
     paddlePewXright = paddleMoveXRight;
     paddlePewYRight = paddleMoveYRight;
